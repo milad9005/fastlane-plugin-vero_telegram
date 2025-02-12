@@ -7,7 +7,7 @@
 This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To get started with `fastlane-plugin-telegram`, add it to your project by running:
 
 ```bash
-add gem 'fastlane-plugin-telegram', git: 'https://github.com/milad9005/fastlane-plugin-vero_telegram', branch: 'master' to "fastlane/Pluginfile"
+add gem 'fastlane-plugin-telegram', git: 'https://github.com/milad9005/fastlane-plugin-vero_telegram' to "fastlane/Pluginfile"
 run: bundle install --no-cache
 
 ```
