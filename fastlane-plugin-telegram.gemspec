@@ -7,11 +7,11 @@ require 'fastlane/plugin/telegram/version'
 Gem::Specification.new do |spec|
   spec.name          = 'fastlane-plugin-telegram'
   spec.version       = Fastlane::Telegram::VERSION
-  spec.author        = 'milad9005'
-  spec.email         = 'msh9005@gmail.com'
+  spec.author        = 'sergpetrov'
+  spec.email         = 's.a.petrov.spb@gmail.com'
 
   spec.summary       = 'Allows post messages to telegram channel and topics'
-  spec.homepage      = "https://github.com/milad9005/fastlane-plugin-vero_telegram/"
+  spec.homepage      = "https://github.com/sergpetrov/fastlane-plugin-telegram"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
