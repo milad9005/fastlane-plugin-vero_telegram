@@ -6,6 +6,7 @@ module Fastlane
 
         token = params[:token]
         chat_id = params[:chat_id]
+        topic_id = params[:topic_id]
         text = params[:text]
         parse_mode = params[:parse_mode]
         file_path = params[:file]
@@ -38,14 +39,17 @@ module Fastlane
 
         require 'net/http/post/multipart'
         text_parameter = (file == nil ? "text" : "caption")
-        request = Net::HTTP::Post::Multipart.new(uri, 
-        { 
+
+        request_params = {
           "chat_id" => chat_id,
           text_parameter => text,
-          "parse_mode" => parse_mode,
-          "document" => file
-        })
+          "parse_mode" => parse_mode
+        }
 
+        request_params["message_thread_id"] = topic_id if topic_id
+        request_params["document"] = file unless file.nil?
+
+        request = Net::HTTP::Post::Multipart.new(uri, request_params)
         response = http.request(request)
       end
 
@@ -77,6 +81,10 @@ module Fastlane
                                         description: "Unique identifier for the target chat (not in the format @channel). For getting chat id you can send any message to your bot and get chat id from response https://api.telegram.org/botYOUR_TOKEN/getupdates",
                                            optional: false,
                                                type: String),
+                   FastlaneCore::ConfigItem.new(key: :topic_id,
+                                        description: "Optional unique identifier for the target topic to which the message should be sent.",
+                                           optional: true,
+                                               type: String),
                    FastlaneCore::ConfigItem.new(key: :text,
                                            env_name: "TELEGRAM_TEXT",
                                         description: "Text of the message to be sent",
@@ -84,14 +92,14 @@ module Fastlane
                                                type: String),
                    FastlaneCore::ConfigItem.new(key: :file,
                                            env_name: "TELEGRAM_FILE",
-                                         description: "File path to the file to be sent",
-                                             optional: true,
-                                                 type: String),
+                                        description: "File path to the file to be sent",
+                                           optional: true,
+                                               type: String),
                    FastlaneCore::ConfigItem.new(key: :mime_type,
                                            env_name: "TELEGRAM_FILE_MIME_TYPE",
-                                         description: "Mime type of file to be sent",
-                                             optional: true,
-                                                 type: String),
+                                        description: "Mime type of file to be sent",
+                                           optional: true,
+                                               type: String),
                    FastlaneCore::ConfigItem.new(key: :parse_mode,
                                            env_name: "TELEGRAM_PARSE_MODE",
                                         description: "Param (Markdown / HTML) for using markdown or HTML support in message",
