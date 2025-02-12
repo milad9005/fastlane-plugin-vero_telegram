@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.author        = 'sergpetrov'
   spec.email         = 's.a.petrov.spb@gmail.com'
 
-  spec.summary       = 'Allows post messages to telegram channel'
+  spec.summary       = 'Allows post messages to telegram channel and topics'
   spec.homepage      = "https://github.com/sergpetrov/fastlane-plugin-telegram"
   spec.license       = "MIT"
 

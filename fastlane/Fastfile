@@ -6,6 +6,7 @@ lane :proxied do
 	telegram(
       token: "your_token",
       chat_id: "your_chat_id",
+      topic_id: "your_topic_id",
       text: "Hello World! (sent trough proxy)",
       proxy: "https://123.45.67.89:80"
     )
