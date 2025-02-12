@@ -7,7 +7,9 @@
 This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To get started with `fastlane-plugin-telegram`, add it to your project by running:
 
 ```bash
-fastlane add_plugin telegram
+add gem 'fastlane-plugin-telegram', git: 'https://github.com/milad9005/fastlane-plugin-vero_telegram', branch: 'send-message-to-unique-topic' to "fastlane/Pluginfile"
+run: bundle install --no-cache
+
 ```
 
 ## About telegram
@@ -18,6 +20,7 @@ Allows post messages to telegram channel
 telegram(
   token: ENV['TG_BOT_TOKEN'], # get token from @BotFather
   chat_id: ENV['TG_CHAT_ID'], # https://stackoverflow.com/questions/33858927/how-to-obtain-the-chat-id-of-a-private-telegram-channel
+  topic_id:ENV['TG_TOPIC_ID'], #optional
   text: "Hello world, Telegram!", # Required
   file: "file.pdf", # Optional. Please note, Bots can currently send files of any type of up to 50 MB in size.
   mime_type: "application/pdf" # Required if file exist
